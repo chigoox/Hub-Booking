@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.4",
     "@nextui-org/react": "^2.1.13",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.54.2",
     "antd": "^5.10.0",
     "antd-img-crop": "^4.13.0",
     "axios": "^1.5.0",
+    "react-icons": "^4.10.1",
+    "lucide-react": "^0.263.1",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "embla-carousel-autoplay": "^8.0.0-rc12",
@@ -22,13 +27,9 @@
     "firebase": "^10.3.1",
     "firebase-admin": "^11.11.0",
     "framer-motion": "^10.16.4",
-    "lucide-react": "^0.263.1",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^4.12.0",
     "stripe": "^13.6.0",
     "tailwind-merge": "^1.14.0"
+
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
