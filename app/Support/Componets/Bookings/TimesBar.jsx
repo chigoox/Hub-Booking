@@ -13,7 +13,7 @@ import React, { memo } from "react"
 const TimesBar = memo(({ times }) => {
     const StartOfWeek = startOfDay(times[0])
     const EndtOfWeek = endOfDay(times[0])
-    const startHour = set(StartOfWeek, { hours: 1 })
+    const startHour = set(StartOfWeek, { hours: 9 })
     const endHour = set(EndtOfWeek, { hours: 17, minutes: 45 })
     let hoursInDay = eachMinuteOfInterval(
         {
@@ -37,9 +37,9 @@ const TimesBar = memo(({ times }) => {
                             key={i}
                             className={cn(
                                 times.some(time => isSameMinute(hour, time)) &&
-                                "h-[4px] w-[.5px] bg-pink-400",
+                                "h-[4px] w-[1px] bg-white",
                                 !times.some(time => isSameMinute(hour, time)) &&
-                                "h-[4px] w-[1px] bg-gray-100"
+                                "h-[4px] w-[1px] bg-gray-600"
                             )}
                         />
                     )

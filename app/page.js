@@ -39,10 +39,10 @@ export default function Home() {
           const [currentImg, setCurrentImg] = useState(0)
           return (
             <div className="m-auto relative fadeInZoom rounded-3xl overflow-hidden  center-col">
-              <Button onPress={(e) => { setCurrentImg(o => o == 0 ? imgs.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-dotted border border-black rounded-full p-1">
+              <Button onPress={(e) => { setCurrentImg(o => o == 0 ? imgs.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-dotted border border-black rounded-full p-6">
                 <ArrowLeftCircle />
               </Button>
-              <Button onPress={(e) => { setCurrentImg(o => (imgs.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white  border-dotted border border-black rounded-full p-1">
+              <Button onPress={(e) => { setCurrentImg(o => (imgs.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white  border-dotted border border-black rounded-full p-6">
                 <ArrowRightCircle />
               </Button>
               <Card isPressable onPress={(e) => setOpenBookItem(!openBookItem)} className="bg-red-800 relative  h-[90%] w-[90%] sm:h-[85%] sm:w-[85%] overflow-hidden drop-shadow-lg shadow-black  rounded-3xl ">

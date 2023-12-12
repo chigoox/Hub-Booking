@@ -236,13 +236,13 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
                                             "style for sat and sun bg"
                                         )}
                                     >
-                                        <Button
+                                        <button
                                             onClick={() => {
                                                 setCalendarTouched(true)
                                                 setSelectedDay(day)
                                             }}
                                             className={cn(
-                                                "w-12 h-12 md:h-24 md:w-24 flex flex-col overflow-visible p-2 justify-center items-center rounded-xl gap-0 group bg-gray-900 relative group",
+                                                "w-12 h-12 md:h-24 md:w-24 flex flex-col  p-2 justify-center items-center rounded-xl gap-0 group bg-gray-900 relative group",
                                                 isEqual(day, selectedDay) &&
                                                 "bg-blue-800 text-white  text-lg",
 
@@ -296,7 +296,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
                                                     times={availableTimesInThisMonthForEachDay[dayIdx]}
                                                 />
                                             )}
-                                        </Button>
+                                        </button>
                                     </div>
                                 )
                             })}
