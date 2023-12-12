@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ :root{
+  --BookingBg: #0d1821;
+ }
 
 
 
@@ -75,6 +77,22 @@ body {
 }
 
 
+.modally .ant-modal-content,
+.modally .ant-modal-header {
+  background-color: var(--BookingBg);
+  width: max-content;
+  
+}
+
+@media screen and (min-width: 768px) {
+  .modally .ant-modal-content,
+    .modally .ant-modal-header {
+      background-color: var(--BookingBg);
+      width: max-content;
+      right: 35%;
+  
+    }
+}
 
 .center {
   display: flex;

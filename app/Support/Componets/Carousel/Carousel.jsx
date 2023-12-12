@@ -38,7 +38,7 @@ export const EmblaCarousel = ({ img1, img2, img3, img4, rounded, noArrow, dim, t
                     {img4 && <Slide rounded={rounded} img={img4} text={text4} dim={dim} noZoom={noZoom} />}
                 </div>
             </div>
-            {!noArrow && <div className='absolute z-[99999] bottom-4 between gap-4 px-8 w-full'>
+            {!noArrow && <div className='absolute border z-[99999999]  bottom-4 between gap-4 px-8 w-full'>
                 <button className="embla__prev hover:scale-110 trans scale-100 rounded-full border border-dotted " onClick={scrollPrev}>
                     <Dot size={32} color='white' />
                 </button>

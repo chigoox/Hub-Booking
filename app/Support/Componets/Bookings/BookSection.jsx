@@ -26,12 +26,12 @@ import {
     startOfWeek,
     startOfYesterday
 } from "date-fns"
-import { CheckCircle2, ChevronLeft, ChevronRight, MoveLeft } from "lucide-react"
+import { ArrowLeftCircle, ArrowRightCircle, CheckCircle2, ChevronLeft, ChevronRight, MoveLeft } from "lucide-react"
 import AvailableHours from "../../Componets/Bookings/AvailableHours"
 import TimesBar from '../../Componets/Bookings/TimesBar'
 import { AiFillBackward, AiOutlineArrowDown, AiOutlineArrowLeft, AiOutlineArrowUp } from 'react-icons/ai'
 import { cn, dayNames } from '@/lib/utils'
-import { CheckboxIcon, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
+import { Button, CheckboxIcon, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
 import { addToDatabase, fetchDocument } from '../../MyCodes/Database'
 
 
@@ -169,22 +169,166 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
         })
     }
     return (
+        <div className='h-auto'>
+            <div className={`${bookingInfo.extraTime ? 'opacity-100' : 'opacity-100 z-0'} trans flex flex-col  md:flex-row   md:items-start  lg:justify-center mb-10 md:mb-24`}>
 
 
-        < Modal isOpen={openBookItem} backdrop={'blur'} onOpenChange={() => { setOpenBookItem(false) }
-        } placement='auto' scrollBehavior='inside' className={`absolute z-[999] border w-full bg-black`}>
-            <ModalContent>
-                {() => (
-                    <>
-                        <ModalHeader className="flex flex-col gap-1 text-white">{('Explore Feed')}</ModalHeader>
-                        <ModalBody className='hidescroll overflow-hidden overflow-y-scroll text-white  p-0 m-auto'>
+                {/* calendar implementation */}
+                <div className="flex flex-col gap-2 h-[450px] w-[380px] md:h-fit md:w-fit mb-10  m-auto my-0">
+                    {/* calendar header */}
+                    <div className="grid grid-cols-3 md:w-[40rem] px-8">
+                        <button
+                            type="button"
+                            onClick={prevMonth}
+                            disabled={isThisMonth(new Date(currentMonth))}
+                        >
+                            <ArrowLeftCircle
+                                size={20}
+                                aria-hidden="true"
+                                color='white'
+                                className={cn(
+                                    isThisMonth(new Date(currentMonth)) && "text-pink-400"
+                                )}
+                            />
+                        </button>
+                        <h2 className="font-semibold text-white justify-center flex text-center">
+                            {format(firstDayCurrentMonth, " MMMM yyyy")}
+                        </h2>
+                        <button
+                            type="button"
+                            className="flex justify-end"
+                            onClick={nextMonth}
+                        >
+                            <ArrowRightCircle size={20} aria-hidden="true" color='white' />
+                        </button>
+                    </div>
 
-                        </ModalBody>
+                    {/* calendar body */}
+                    <div className='p-2'>
+                        <div className="grid grid-cols-7 mt-4 md:w-[40rem]">
+                            {dayNames.map((day, i) => {
+                                return (
+                                    <div
+                                        key={i}
+                                        className={cn(
+                                            "flex justify-center items-center text-sm text-white w-full py-2",
+                                            {
+                                                "text-red-700 font-bold":
+                                                    day === "Sun" || day === "Sat"
+                                            }
+                                        )}
+                                    >
+                                        {day}
+                                    </div>
+                                )
+                            })}
+                        </div>
 
-                    </>
-                )}
-            </ModalContent>
-        </Modal >
+                        <div className="grid grid-cols-7 text-sm gap-2 md:w-[40rem]">
+                            {days.map((day, dayIdx) => {
+                                return (
+                                    <div
+                                        key={day.toString()}
+                                        className={cn(
+                                            dayIdx === 0 && colStartClasses[getDay(day) - 1],
+                                            " justify-center flex items-center",
+                                            (getDay(day) === 0 || getDay(day) === 6) &&
+                                            "style for sat and sun bg"
+                                        )}
+                                    >
+                                        <Button
+                                            onClick={() => {
+                                                setCalendarTouched(true)
+                                                setSelectedDay(day)
+                                            }}
+                                            className={cn(
+                                                "w-12 h-12 md:h-24 md:w-24 flex flex-col overflow-visible p-2 justify-center items-center rounded-xl gap-0 group bg-gray-900 relative group",
+                                                isEqual(day, selectedDay) &&
+                                                "bg-blue-800 text-white  text-lg",
+
+
+
+                                                isEqual(today, day) && "text-white bg-sky-700",
+                                                isBefore(day, today) && "cursor-not-allowed bg-gray-700 text-red-900",
+                                                isEqual(day, selectedDay) &&
+                                                isToday(day) &&
+                                                "bg-blue-600",
+                                                !isEqual(day, selectedDay) &&
+                                                !isToday(day) &&
+                                                !isSameMonth(day, firstDayCurrentMonth) &&
+                                                "text-blue-400",
+                                                !isEqual(day, selectedDay) &&
+                                                !isToday(day) &&
+                                                isSameMonth(day, firstDayCurrentMonth) &&
+                                                "text-white"
+                                            )}
+                                            disabled={isBefore(day, today)}
+                                        >
+                                            {isAfter(day, startOfYesterday()) && (
+                                                <span className="hidden group-hover:flex absolute top-0 -translate-x-.5 -translate-y-4 z-10 text-[11px] bg-slate-900 text-slate-100 px-1 rounded-md gap-1">
+                                                    <span>{availableTimesInThisMonth[dayIdx]}</span>
+                                                    <span>Available</span>
+                                                </span>
+                                            )}
+
+                                            <time
+                                                dateTime={format(day, "yyyy-MM-dd")}
+                                                className={cn(
+                                                    "group-hover:text-lg trans ",
+                                                    (isEqual(day, selectedDay) || isToday(day)) &&
+                                                    "font-semibold"
+                                                )}
+                                            >
+                                                {format(day, "d")}
+                                            </time>
+
+                                            <CheckCircle2
+                                                className={cn(
+                                                    "hidden",
+                                                    isEqual(day, selectedDay) &&
+                                                    "absolute block top-0 right-0 h-[18px] w-[18px] translate-x-1 -translate-y-1 text-white",
+                                                    isEqual(day, today) && "text-white"
+                                                )}
+                                            />
+
+                                            {isAfter(day, startOfYesterday()) && (
+                                                <TimesBar
+                                                    times={availableTimesInThisMonthForEachDay[dayIdx]}
+                                                />
+                                            )}
+                                        </Button>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+
+                <div className={cn(`hidden mx-auto fadeInZoom`, calendarTouched && "block")}>
+                    <span className="flex items-center w-full justify-center gap-1">
+                        <span>
+                            <h1 className='text-center'>Select reservation time</h1>
+                            <h1 className="text-center text-pink-400 font-semibold pl-1">
+                                {format(selectedDay, "dd MMMM yyyy").toString()}
+                            </h1>
+                        </span>
+                    </span>
+
+                    <AvailableHours freeTimes={freeTimes} setBookingInfo={setBookingInfo} reload={reload} setReload={setReload} />
+                </div>
+            </div>
+
+
+            {bookingInfo.apointment && <div className=' mb-96  center flex-col text-white p-2'>
+                <h1 className='text-xl text-center'>{`Your reservation is on ${bookingInfo.apointment}`}</h1>
+                <h1 className='text-center text-pink-700'>depoit half to comfirm booking</h1>
+                <div className='center gap-1'>
+                    <h1 className='text-center text-pink-700 text-5xl'>{'$' + total}</h1>
+                    <h1>+ Tax</h1>
+                </div>
+                <button onClick={bookNow} className='h-12 w-32 bg-pink-700'>Book Now</button>
+            </div>}
+        </div>
     )
 }
 
