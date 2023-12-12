@@ -5,7 +5,7 @@
   --BookingBg: #0d1821;
  }
 
-
+*{box-sizing: border-box;}
 
 /* width */
 ::-webkit-scrollbar {

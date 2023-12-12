@@ -14,6 +14,18 @@ const imgs = ['https://plus.unsplash.com/premium_photo-1700391373027-e0ba6c3da99
   'https://images.unsplash.com/photo-1682685794304-99d3d07c57d2?q=80&w=2486&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',]
 
 
+const Rentals = {
+  name: 'name of item',
+  price: 'price/hr',
+  location: 'where item/event is located',
+  description: 'about the item or space',
+  images: [] //array of urls
+
+}
+
+
+
+
 
 export default function Home() {
   const [openBookItem, setOpenBookItem] = useState(false)
@@ -48,9 +60,14 @@ export default function Home() {
               <Card isPressable onPress={(e) => setOpenBookItem(!openBookItem)} className="bg-red-800 relative  h-[90%] w-[90%] sm:h-[85%] sm:w-[85%] overflow-hidden drop-shadow-lg shadow-black  rounded-3xl ">
                 <img className="h-full w-full  object-cover aspect-square rounded-3xl " src={imgs[currentImg]} />
               </Card>
-              <div className="between text-black px-20 mt-4  w-full ">
-                <h1 className=" font-bold ">EventSpace</h1>
-                <h1 className="font-bold">$999</h1>
+              <div className=" px-2">
+                <div className="between w-full text-black  mt-1  ">
+                  <h1 className=" font-bold  ">EventSpace</h1>
+                  <h1 className="font-extrabold">$999</h1>
+                </div>
+                <h1 className="font-light">Union, NJ</h1>
+                <h1 className="font-extralight">something about the item or location</h1>
+
               </div>
             </div>
 
