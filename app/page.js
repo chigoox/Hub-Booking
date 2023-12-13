@@ -45,7 +45,7 @@ export default function Home() {
         onCancel={() => setOpenBookItem(false)}
       >
         <div className="sticky w-full top-16 z-10 mb-3 center">
-          <Button onPress={toggleStartBooking} className={`h-12 w-32 font-bold text-lg text-white hover: rounded-3xl bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
+          <Button onClick={toggleStartBooking} className={`h-12 w-32 font-bold text-lg text-white hover: rounded-3xl bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
         </div>
         {!startBooking && <InfoSection />}
         {startBooking && <BookSection />}
