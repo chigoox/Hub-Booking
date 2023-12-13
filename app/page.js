@@ -35,22 +35,25 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
 
-      <Modal
-        title={(<h1 className="text-white font-bold">Booking</h1>)}
-        centered
-        wrapClassName="bg-balck"
-        className="modally "
-        open={openBookItem}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setOpenBookItem(false)}
-      >
-        <div className="sticky w-full top-16 z-10 mb-3 center">
-          <Button onClick={toggleStartBooking} className={`h-12 w-32 font-bold text-lg text-white hover: rounded-3xl bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
-        </div>
-        {!startBooking && <InfoSection />}
-        {startBooking && <BookSection />}
+      {openBookItem && <div className="center">
+        <Modal
+          closeIcon={(<div></div>)}
+          footer={(<div></div>)}
+          wrapClassName="bg-balck"
+          className="modally "
+          open={openBookItem}
 
-      </Modal>
+        >
+          <h1 className="text-2xl font-bold text-center p-4 bg-black text-white">Booking</h1>
+          {!startBooking && <InfoSection />}
+          {startBooking && <BookSection />}
+          <div className="sticky bottom-5 w-full my-10 z-10 mb-3 gap-4 center">
+            <Button onPress={toggleStartBooking} className={`h-10 w-28 font-bold p-2 text-white hover: rounded-3xl trans-slow hover:text-green-200 hover:bg-blue-700 bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
+            <Button onPress={() => { setOpenBookItem(false) }} className={`h-10 w-28 font-bold p-2 text-white hover:  rounded-3xl bg-gray-950 hover:bg-red-900 trans-slow`}>Close</Button>
+          </div>
+
+        </Modal>
+      </div>}
 
 
       <div className=" gap-4 mt-10 relative hidescroll  w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">

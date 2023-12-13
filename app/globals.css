@@ -80,9 +80,9 @@ body {
 .modally .ant-modal-content,
 .modally .ant-modal-header {
   background-color: var(--BookingBg);
-  width: max-content;
+  overflow: hidden;
+  margin: none;
   padding: 0px;
-      right: 3px;
   
 }
 
@@ -91,7 +91,7 @@ body {
     .modally .ant-modal-header {
       background-color: var(--BookingBg);
       width: max-content;
-      right: 35%;
+     
   
     }
 }
