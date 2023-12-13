@@ -169,7 +169,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
         })
     }
     return (
-        <div className='h-auto'>
+        <div className='h-auto m-auto'>
             <div className={`${bookingInfo.extraTime ? 'opacity-100' : 'opacity-100 z-0'} trans flex flex-col  md:flex-row   md:items-start  lg:justify-center mb-10 md:mb-24`}>
 
 
@@ -186,7 +186,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
                                 size={20}
                                 aria-hidden="true"
                                 color='white'
-                                className={cn(
+                                className={cn('top-2 relative',
                                     isThisMonth(new Date(currentMonth)) && "text-pink-400"
                                 )}
                             />
@@ -196,7 +196,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
                         </h2>
                         <button
                             type="button"
-                            className="flex justify-end"
+                            className="flex justify-end top-2 relative"
                             onClick={nextMonth}
                         >
                             <ArrowRightCircle size={20} aria-hidden="true" color='white' />
@@ -307,8 +307,8 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
                 <div className={cn(`hidden mx-auto fadeInZoom`, calendarTouched && "block")}>
                     <span className="flex items-center w-full justify-center gap-1">
                         <span>
-                            <h1 className='text-center'>Select reservation time</h1>
-                            <h1 className="text-center text-pink-400 font-semibold pl-1">
+                            <h1 className='text-center text-white'>Select reservation time for</h1>
+                            <h1 className="text-center text-white font-semibold pl-1">
                                 {format(selectedDay, "dd MMMM yyyy").toString()}
                             </h1>
                         </span>

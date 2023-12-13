@@ -34,7 +34,7 @@ const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) =
     }
 
     return (
-        <div className="flex text-white flex-col items-center gap-2 mt-4 border-y  h-[30rem]">
+        <div className="flex text-white flex-col items-center w-96 md:w-auto gap-2 mt-4 border-y  h-[30rem]">
             <span>
                 Available times:{" "}
                 <span className="font-semibold ">

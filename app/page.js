@@ -7,6 +7,7 @@ import EmblaCarousel from "./Support/Componets/Carousel/Carousel";
 import { useState } from "react";
 import { ArrowLeftCircle, ArrowRightCircle, Heading1, MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import { Button } from "@nextui-org/react"
+import InfoSection from "./Support/Componets/Bookings/InfoSection";
 
 const imgs = ['https://plus.unsplash.com/premium_photo-1700391373027-e0ba6c3da990?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'https://images.unsplash.com/photo-1698862341365-cf4478f12332?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -29,6 +30,8 @@ const Rentals = {
 
 export default function Home() {
   const [openBookItem, setOpenBookItem] = useState(false)
+  const [startBooking, setStartBooking] = useState(false)
+  const toggleStartBooking = () => setStartBooking(!startBooking)
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
 
@@ -36,12 +39,16 @@ export default function Home() {
         title={(<h1 className="text-white font-bold">Booking</h1>)}
         centered
         wrapClassName="bg-balck"
-        className="modally"
+        className="modally "
         open={openBookItem}
         onOk={() => setModal2Open(false)}
         onCancel={() => setOpenBookItem(false)}
       >
-        <BookSection />
+        <div className="sticky w-full top-16 z-10 mb-3 center">
+          <Button onPress={toggleStartBooking} className={`h-12 w-32 font-bold text-lg text-white hover: rounded-3xl bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
+        </div>
+        {!startBooking && <InfoSection />}
+        {startBooking && <BookSection />}
 
       </Modal>
 
@@ -51,10 +58,10 @@ export default function Home() {
           const [currentImg, setCurrentImg] = useState(0)
           return (
             <div className="m-auto relative fadeInZoom rounded-3xl overflow-hidden  center-col">
-              <Button onPress={(e) => { setCurrentImg(o => o == 0 ? imgs.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-dotted border border-black rounded-full p-6">
+              <Button onPress={(e) => { setCurrentImg(o => o == 0 ? imgs.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-black rounded-full p-6">
                 <ArrowLeftCircle />
               </Button>
-              <Button onPress={(e) => { setCurrentImg(o => (imgs.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white  border-dotted border border-black rounded-full p-6">
+              <Button onPress={(e) => { setCurrentImg(o => (imgs.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white   border-black rounded-full p-6">
                 <ArrowRightCircle />
               </Button>
               <Card isPressable onPress={(e) => setOpenBookItem(!openBookItem)} className="bg-red-800 relative  h-[90%] w-[90%] sm:h-[85%] sm:w-[85%] overflow-hidden drop-shadow-lg shadow-black  rounded-3xl ">
@@ -66,7 +73,7 @@ export default function Home() {
                   <h1 className="font-extrabold">$999</h1>
                 </div>
                 <h1 className="font-light">Union, NJ</h1>
-                <h1 className="font-extralight">something about the item or location</h1>
+                <h1 className="font-extralight text-gray-400">something about the item or location</h1>
 
               </div>
             </div>

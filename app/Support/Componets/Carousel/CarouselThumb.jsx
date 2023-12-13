@@ -32,7 +32,7 @@ const EmblaCarouselThumb = ({ slides, options }) => {
         emblaMainApi.on('reInit', onSelect)
     }, [emblaMainApi, onSelect])
     return (
-        <div className="emblathumb">
+        <div className="emblathumb center-col">
             <div className="emblathumb__viewport overflow-hidden rounded  w-full md:w-[30rem] shadow-md shadow-black-800" ref={emblaMainRef}>
                 <div className="emblathumb__container ">
                     {slides?.map((value, index) => (

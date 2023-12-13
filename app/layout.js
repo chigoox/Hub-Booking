@@ -1,13 +1,17 @@
-import { Inter } from 'next/font/google'
+import {
+  Inter, Poppins, Roboto
+} from 'next/font/google'
 import './globals.css'
 import NavBar from './Support/Componets/NavBar/NavBar'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Roboto({ subsets: ['latin'], weight: ['400'] })
 
 export const metadata = {
   title: 'TheHub',
   description: 'Rentals',
 }
+
+
 
 export default function RootLayout({ children }) {
   return (

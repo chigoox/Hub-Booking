@@ -81,6 +81,8 @@ body {
 .modally .ant-modal-header {
   background-color: var(--BookingBg);
   width: max-content;
+  padding: 0px;
+      right: 3px;
   
 }
 
