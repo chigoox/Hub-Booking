@@ -68,7 +68,7 @@ export default function Home() {
       </div>}
 
 
-      <div id="Booking" className=" gap-4 mt-10 relative hidescroll py-20 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <div id="Booking" className=" gap-4 mt-10 relative hidescroll py-40 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {createArray(4).map(i => {
           const [currentImg, setCurrentImg] = useState(0)
           return (
@@ -109,7 +109,7 @@ export default function Home() {
 
 
 
-      <div id="Blog" className="max-w-full bg-black mt-8 py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
+      <div id="Blog" className="max-w-full bg-black  py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
         <Card className="col-span-6 rounded-3xl sm:col-span-4 h-[300px]">
           <CardHeader className="absolute z-10 top-1 flex-col px-4 !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
