@@ -37,7 +37,7 @@ export default function Home() {
 
       <div className="between h-screen  relative overflow-hidden">
         <div className="h-screen w-screen absolute top-0 center">
-          <h1 className="md:text-[200px] text-[100px] text-white  stroke-rose-800 stroke-2 drop-shadow-[0_5.2px_1.2px_rgba(0,0,0,0.8)] px-5 m-auto z-50 font-extrabold">The Hub</h1>
+          <h1 className="md:text-[200px] text-[100px] text-white  h-screen center    stroke-rose-800 stroke-2 drop-shadow-[0_2.2px_1.2px_rgba(0,0,0,0.8)] px-5 m-auto z-50 font-extrabold">The Hub</h1>
 
 
         </div>
@@ -101,14 +101,16 @@ export default function Home() {
       </div>
 
 
-      <div className="h-72 bg-black">
-        <video src={'https://v.ftcdn.net/04/84/34/49/700_F_484344958_ko8I1Rh9sEHv2KVkNLg1vLK1IlxuaOIU_ST.mp4'} className="w-full aspect-video h-full object-cover" loop autoplay="true" />
+      <div className="h-72 overflow-hidden">
+        <iframe className=' w-full h-screen relative aspect-video md:bottom-52 '
+          src={`https://www.youtube.com/embed/bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd?autoplay=1&mute=1&controls=0&loop=1playlist=bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd`}>
+        </iframe>
       </div>
 
 
 
       <div id="Blog" className="max-w-full bg-black mt-8 py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
-        <Card className="col-span-12 rounded-3xl sm:col-span-4 h-[300px]">
+        <Card className="col-span-6 rounded-3xl sm:col-span-4 h-[300px]">
           <CardHeader className="absolute z-10 top-1 flex-col px-4 !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
             <h4 className="text-white font-medium text-large">Stream the Acme event</h4>
@@ -120,7 +122,7 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1702234893452-52302797f873?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </Card>
-        <Card className="col-span-12 rounded-3xl sm:col-span-4 h-[300px]">
+        <Card className="col-span-6 rounded-3xl sm:col-span-4 h-[300px]">
           <CardHeader className="absolute px-4 z-10 top-1 flex-col !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">Plant a tree</p>
             <h4 className="text-white font-medium text-large">Contribute to the planet</h4>
