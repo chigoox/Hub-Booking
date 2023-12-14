@@ -101,8 +101,8 @@ export default function Home() {
       </div>
 
 
-      <div className="h-72 overflow-hidden">
-        <iframe className=' w-full h-screen relative aspect-video md:bottom-52 '
+      <div className="md:h-72  overflow-hidden">
+        <iframe className=' w-full md:h-screen relative  md:bottom-52 '
           src={`https://www.youtube.com/embed/bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd?autoplay=1&mute=1&controls=0&loop=1playlist=bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd`}>
         </iframe>
       </div>
