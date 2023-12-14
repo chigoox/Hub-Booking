@@ -35,9 +35,29 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
 
-      <div className="between h-screen  relative overflow-hidden">
-        <div className="h-screen w-screen absolute top-0 center">
-          <h1 className="md:text-[200px] text-[100px] text-white  h-screen center    stroke-rose-800 stroke-2 drop-shadow-[0_2.2px_1.2px_rgba(0,0,0,0.8)] px-5 m-auto z-50 font-extrabold">The Hub</h1>
+      <div className="between h-screen  relative overflow-hidden ">
+        <div className="h-screen w-screen absolute top-0 center  ">
+          <div className="lg:text-[200px] text-[90px] text-white center  w-full md:px-5 m-auto z-50 font-extrabold bg-black bg-opacity-50 h-screen">
+            <h1 className="border">The Hub</h1>
+            <div className="absolute top-12 left-0  px-4  m-auto  h-72 w-full grid grid-cols-12  drop-shadow-xl  gap-2 ">
+              <Card className="h-32 w-fit rounded-3xl skew-x-12 m-auto   hover:scale-110 scale-100 trans-slow hover: col-span-4  overflow-hidden ">
+                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full object-cover" />
+              </Card>
+              <Card className="h-32 w-fit rounded-3xl m-auto  hover:scale-110 scale-100 trans-slow hover: col-span-4  ">
+                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full object-cover" />
+              </Card>
+              <Card className="h-32  w-fit  rounded-3xl m-auto -skew-x-12 hover:scale-110 scale-100 trans-slow hover: col-span-4  ">
+                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className=" h-72 w-full object-cover" />
+              </Card>
+              <Card className="h-auto w-fit max-h-60 m-auto rounded-3xl  hover:scale-110 scale-100 trans-slow hover: col-span-12  ">
+                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-full w-full object-cover" />
+              </Card>
+
+
+
+
+            </div>
+          </div>
 
 
         </div>
@@ -68,7 +88,8 @@ export default function Home() {
       </div>}
 
 
-      <div id="Booking" className=" gap-4 mt-10 relative hidescroll py-40 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <div id="Booking" className=" gap-4  relative hidescroll py-40 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <h1 className="text-3xl absolute top-14 px-8 font-bold mt-10 w-1/2 -left-2 bg-black text-white -skew-x-12">Featured Booking</h1>
         {createArray(4).map(i => {
           const [currentImg, setCurrentImg] = useState(0)
           return (
@@ -102,14 +123,16 @@ export default function Home() {
 
 
       <div className="md:h-72  overflow-hidden">
-        <iframe className=' w-full md:h-screen relative  md:bottom-52 '
-          src={`https://www.youtube.com/embed/bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd?autoplay=1&mute=1&controls=0&loop=1playlist=bWxyVF1LJAo?si=gOXm4Oeam5_3a5Zd`}>
+        <iframe frameborder="0" allowfullscreen className=' w-full aspect-video md:h-screen relative  md:bottom-52 '
+          src={`https://www.youtube.com/embed/bWxyVF1LJAo?autoplay=1&mute=1&controls=0&loop=1playlist=bWxyVF1LJAo`}>
         </iframe>
       </div>
 
 
 
-      <div id="Blog" className="max-w-full bg-black  py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
+      <div id="Blog" className="max-w-full relative bg-black  py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
+        <h1 className="text-3xl absolute top-0    px-8 font-bold mt-10 w-1/2 -left-2 bg-white text-black z-[9999] -skew-x-12">Featured Blog</h1>
+
         <Card className="col-span-6 rounded-3xl sm:col-span-4 h-[300px]">
           <CardHeader className="absolute z-10 top-1 flex-col px-4 !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
