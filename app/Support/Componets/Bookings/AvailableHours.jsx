@@ -7,7 +7,6 @@ import { addToDatabase } from "../../MyCodes/Database"
 // eslint-disable-next-line react/display-name
 const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) => {
     const [selectedTime, setSelectedTime] = useState()
-    console.log(startOfDay(selectedTime))
 
     const bookTime = () => {
         const fullDate = format(selectedTime, "MM-dd-yy hh:mm aaaaa'm'")
@@ -41,13 +40,13 @@ const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) =
                     {freeTimes.length}
                 </span>
             </span>
-            <div className="grid lg:grid-cols-3 grid-cols-5 md:grid-cols-2    text-md gap-4 md:h-[35rem] hidescroll p-4 overflow-y-scroll">
+            <div className="grid lg:grid-cols-3 grid-cols-4 md:grid-cols-2    text-md gap-4 md:h-[35rem] hidescroll p-4 overflow-y-scroll">
                 {freeTimes.map((hour, hourIdx) => (
                     <div key={hourIdx}>
                         <button
                             type="button"
                             className={cn(
-                                "bg-gray-800 trans-slow rounded-lg px-2 text-white relative hover:border hover:border-gray-900 w-[64px] h-[64px]",
+                                "bg-gray-800 trans-slow  rounded-lg px-2 m-auto text-white relative hover:border hover:border-gray-900 w-[64px] h-[64px]",
                                 selectedTime &&
                                 isSameMinute(selectedTime, hour) &&
                                 "bg-blue-900 text-white font-bold"

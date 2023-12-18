@@ -86,14 +86,14 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
         const StartOfToday = startOfDay(selectedDay)
         const endOfToday = endOfDay(selectedDay)
         // change your working hours here
-        const startHour = set(StartOfToday, { hours: 9 })
-        const endHour = set(endOfToday, { hours: 20, minutes: 0 })
+        const startHour = set(StartOfToday, { hours: 0 })
+        const endHour = set(endOfToday, { hours: 23, minutes: 0 })
         let hoursInDay = eachMinuteOfInterval(
             {
                 start: startHour,
                 end: endHour
             },
-            { step: bookingInfo.extraTime == 'No' ? 60 : 90 }
+            { step: 60 }
         )
 
         // filter the available hours
@@ -114,8 +114,8 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
             const StartOfToday = startOfDay(day)
             const endOfToday = endOfDay(day)
             // change your working hours here
-            const startHour = set(StartOfToday, { hours: 9 })
-            const endHour = set(endOfToday, { hours: 20, minutes: 0 })
+            const startHour = set(StartOfToday, { hours: 0 })
+            const endHour = set(endOfToday, { hours: 23, minutes: 0 })
             let hoursInDay = eachMinuteOfInterval(
                 {
                     start: startHour,
@@ -149,25 +149,32 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
     }, [reload, calendarTouched, selectedDay])
 
 
-    const bookNow = () => {
-        console.log(total)
+    const bookNow = async () => {
 
-        fetch('/.netlify/functions/CheckOut', {
-            method: 'POST',
-            pinkirect: 'follow',
-            headers: { 'Content-Type': 'application/json' },
+        const payment = await fetch("/api/Book", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-                price: total / 2,
-                name: myPackage.type
-            })
-        }).then(res => {
-            res.json().then(res => {
-
-                window.location.href = res.url
-
-            })
+                data: {
+                    //
+                    price: total / 2,
+                    name: 'booking'
+                }
+            }),
         })
+
+        const paymentConfirm = await payment.json().then(res => {
+            window.location.href = res.url
+        })
+
+        return { payment: { ...paymentConfirm } }
+
     }
+
+
+
     return (
         <div className='h-auto m-auto'>
             <div className={`${bookingInfo.extraTime ? 'opacity-100' : 'opacity-100 z-0'} trans flex flex-col  md:flex-row   md:items-start  lg:justify-center mb-10 md:mb-24`}>

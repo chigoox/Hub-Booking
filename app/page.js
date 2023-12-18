@@ -32,25 +32,26 @@ export default function Home() {
   const [openBookItem, setOpenBookItem] = useState(false)
   const [startBooking, setStartBooking] = useState(false)
   const toggleStartBooking = () => setStartBooking(!startBooking)
+
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
 
       <div className="between h-screen  relative overflow-hidden ">
         <div className="h-screen w-screen absolute top-0 center  ">
           <div className="lg:text-[200px] text-[90px] text-white center  w-full md:px-5 m-auto z-50 font-extrabold bg-black bg-opacity-50 h-screen">
-            <h1 className="border">The Hub</h1>
-            <div className="absolute top-12 left-0  px-4  m-auto  h-72 w-full grid grid-cols-12  drop-shadow-xl  gap-2 ">
-              <Card className="h-32 w-fit rounded-3xl skew-x-12 m-auto   hover:scale-110 scale-100 trans-slow hover: col-span-4  overflow-hidden ">
-                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full object-cover" />
+            <h1 className="z-[9999] relative top-20 md:top-10 ">The Hub</h1>
+            <div className="absolute top-12 left-0  px-4  m-auto  h-72 w-full grid grid-cols-12  drop-shadow-xl  gap-4 ">
+              <Card className="h-32 w-fit rounded-3xl skew-x-12 m-auto   hover:scale-105 scale-100 trans-slow hover: col-span-4  overflow-hidden ">
+                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full hover:scale-125 scale-105 trans-slow  object-cover" />
               </Card>
-              <Card className="h-32 w-fit rounded-3xl m-auto  hover:scale-110 scale-100 trans-slow hover: col-span-4  ">
-                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full object-cover" />
+              <Card className="h-32 w-fit rounded-3xl m-auto  hover:scale-105 scale-100 trans-slow hover: col-span-4  ">
+                <Image src="https://images.unsplash.com/photo-1702499903230-867455db1752?q=80&w=3638&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="h-72 w-full hover:scale-125 scale-105 trans-slow object-cover" />
               </Card>
-              <Card className="h-32  w-fit  rounded-3xl m-auto -skew-x-12 hover:scale-110 scale-100 trans-slow hover: col-span-4  ">
-                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className=" h-72 w-full object-cover" />
+              <Card className="h-32  w-fit  rounded-3xl m-auto -skew-x-12 hover:scale-195 scale-100 trans-slow hover: col-span-4  ">
+                <Image src="https://images.unsplash.com/photo-1701839339832-158736f88c0f?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className=" h-72 w-full hover:scale-125 scale-105 trans-slow object-cover" />
               </Card>
-              <Card className="h-auto w-fit max-h-60 m-auto rounded-3xl  hover:scale-110 scale-100 trans-slow hover: col-span-12  ">
-                <Image src="https://images.unsplash.com/photo-1702501725284-68647b625bd0?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" className="h-full w-full object-cover" />
+              <Card className="h-auto w-fit max-h-60 m-auto rounded-3xl  hover:scale-105 scale-100 trans-slow hover: col-span-12  ">
+                <Image src="https://images.unsplash.com/photo-1682685797769-481b48222adf?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="h-full w-full hover:scale-125 scale-105 trans-slow object-cover" />
               </Card>
 
 
@@ -89,7 +90,7 @@ export default function Home() {
 
 
       <div id="Booking" className=" gap-4  relative hidescroll py-40 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        <h1 className="text-3xl absolute top-14 px-8 font-bold mt-10 w-1/2 -left-2 bg-black text-white -skew-x-12">Featured Booking</h1>
+        <h1 className="text-3xl absolute md:top-14 px-8 font-bold mt-10 w-1/2 -left-2 bg-black text-white -skew-x-12">Featured Booking</h1>
         {createArray(4).map(i => {
           const [currentImg, setCurrentImg] = useState(0)
           return (
@@ -130,10 +131,10 @@ export default function Home() {
 
 
 
-      <div id="Blog" className="max-w-full relative bg-black  py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
-        <h1 className="text-3xl absolute top-0    px-8 font-bold mt-10 w-1/2 -left-2 bg-white text-black z-[9999] -skew-x-12">Featured Blog</h1>
+      <div id="Blog" className="max-w-full relative bg-black mt-10 py-20 gap-2 grid grid-cols-12 grid-rows-2 px-8">
+        <h1 className="text-3xl absolute   px-8 font-bold  md:w-1/2 -left-2 bg-white text-black z-[9999] -skew-x-12">Featured Blog</h1>
 
-        <Card className="col-span-6 rounded-3xl sm:col-span-4 h-[300px]">
+        <Card className="col-span-6 mt-4 md:mt-0 rounded-3xl sm:col-span-4 h-[300px]">
           <CardHeader className="absolute z-10 top-1 flex-col px-4 !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
             <h4 className="text-white font-medium text-large">Stream the Acme event</h4>
