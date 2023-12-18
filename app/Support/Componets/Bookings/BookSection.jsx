@@ -33,6 +33,7 @@ import { AiFillBackward, AiOutlineArrowDown, AiOutlineArrowLeft, AiOutlineArrowU
 import { cn, dayNames } from '@/lib/utils'
 import { Button, CheckboxIcon, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
 import { addToDatabase, fetchDocument } from '../../MyCodes/Database'
+import Loading from '../Loading'
 
 
 
@@ -41,10 +42,13 @@ import { addToDatabase, fetchDocument } from '../../MyCodes/Database'
 
 
 
-export const BookSection = ({ openBookItem, setOpenBookItem }) => {
+export const BookSection = ({ openBookItem }) => {
     const [adminDATA, setAdminDATA] = useState({})
     const reservations = adminDATA?.allRes ? adminDATA?.allRes : []
 
+    const [loading, setLoading] = useState(false)
+
+    const total = openBookItem.price
 
     const [bookingInfo, setBookingInfo] = useState({})
     const [reload, setReload] = useState(false)
@@ -142,7 +146,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
 
     ]
 
-    const total = (100)
+
     useEffect(() => {
         fetchDocument('Admin', 'reservations', setAdminDATA)
 
@@ -150,26 +154,33 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
 
 
     const bookNow = async () => {
+        setLoading(true)
+        try {
+            const payment = await fetch("/api/Book", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    data: {
+                        //
+                        price: total,
+                        name: String(openBookItem?.name),
+                        img: openBookItem?.img
+                    }
+                }),
+            })
 
-        const payment = await fetch("/api/Book", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                data: {
-                    //
-                    price: total / 2,
-                    name: 'booking'
-                }
-            }),
-        })
+            const paymentConfirm = await payment.json().then(res => {
+                window.location.href = res.url
+            })
 
-        const paymentConfirm = await payment.json().then(res => {
-            window.location.href = res.url
-        })
+            return { payment: { ...paymentConfirm } }
+        } catch (error) {
+            console.log(error.message)
+            setLoading(false)
+        }
 
-        return { payment: { ...paymentConfirm } }
 
     }
 
@@ -177,6 +188,7 @@ export const BookSection = ({ openBookItem, setOpenBookItem }) => {
 
     return (
         <div className='h-auto m-auto'>
+            {loading && <Loading />}
             <div className={`${bookingInfo.extraTime ? 'opacity-100' : 'opacity-100 z-0'} trans flex flex-col  md:flex-row   md:items-start  lg:justify-center mb-10 md:mb-24`}>
 
 
