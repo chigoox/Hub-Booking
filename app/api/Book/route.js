@@ -9,7 +9,6 @@ export async function POST(request) {
 
     const inDev = isDev()
 
-    console.log(inDev)
 
 
 
