@@ -3,11 +3,12 @@ import { useState } from "react"
 import Loading from "../Support/Componets/Loading"
 import RentalSection from "./Componets/Rentals/RentalSection"
 import { Button } from "@nextui-org/react"
+import BlogSection from "./Componets/BlogSection"
 
 
 function page() {
-    const menuItem = ['Rentals', 'blogs']
-    const [currentMenu, setCurrentMenu] = useState(false)
+    const menuItem = ['Rentals', 'Blogs']
+    const [currentMenu, setCurrentMenu] = useState('Blogs')
     const [loading, setLoading] = useState(false)
     return (
         <div className='min-h-screen w-full   relative  h-screen trans  bg-black'>
@@ -22,8 +23,7 @@ function page() {
             }
 
             {currentMenu == 'Blogs' &&
-                <div>
-                </div>
+                <BlogSection />
             }
 
         </div>

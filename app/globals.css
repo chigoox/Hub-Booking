@@ -1,6 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .editorJs h1 {
+      @apply text-4xl;
+      @apply font-extrabold;
+    }
+  
+    .editorJs h2 {
+      @apply text-3xl;
+      @apply font-bold;
+    }
+  
+    .editorJs h3 {
+      @apply text-2xl;
+      @apply font-bold;
+    }
+  
+    .editorJs h4 {
+      @apply text-xl;
+      @apply font-semibold;
+    }
+  
+    .editorJs h5 {
+      @apply text-lg;
+      @apply font-semibold;
+    }
+  
+    .editorJs h6 {
+      @apply text-sm;
+      @apply font-semibold;
+    }
+  
+    .editorJs a {
+      @apply text-blue-600 underline;
+    }
+
+  /* ... */
+}
+
  :root{
   --BookingBg: #0d1821;
  }
@@ -471,6 +511,9 @@ used for Carouse
   pointer-events: none;
   color: black;
 }
+
+
+
 
 .emblathumb-thumbs__slide__number>span {
   color: var(--brand-primary);
