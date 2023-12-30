@@ -6,6 +6,7 @@ import TagFilterButton from '@/app/Support/Componets/Blog/TagFilterButton'
 import BlogViewer from '@/app/Support/Componets/Blog/BlogViewer'
 
 
+
 const BlogSection = ({ onPage }) => {
     const [dataBlog, setDataBlog] = useState([])
     const [dataMETADATA, setDataMETADATA] = useState()
@@ -36,7 +37,6 @@ const BlogSection = ({ onPage }) => {
 
 
     }, [openNewBlogWindow, openOldBlogWindow])
-    console.log(dataBlog)
     return (
         <div className='center flex-col relative overflow- y-hidden   h-[53.2rem]  md:h-[43.5rem] border-b border-red-500'>
             {openNewBlogWindow && <BlogEditor toggleNewBlog={toggleNewBlog} data={BLOGDATA} />}
@@ -53,9 +53,9 @@ const BlogSection = ({ onPage }) => {
                         {
                             <div className='grid grid-cols-3 gap-2 p-4'>
                                 {
-                                    dataMETADATA?.postTags ? dataMETADATA.postTags.map(item => {
+                                    dataMETADATA?.postTags ? dataMETADATA.postTags.map((item, index) => {
                                         return (
-                                            <TagFilterButton setFilter={setTagFilter} tag={item} filter={tagFilter} />
+                                            <TagFilterButton key={index} setFilter={setTagFilter} tag={item} filter={tagFilter} />
                                         )
                                     })
                                         :
@@ -73,7 +73,7 @@ const BlogSection = ({ onPage }) => {
                         dataBlog.map((item, index) => {
                             console.log(item)
                             if (item.meta?.tags?.includes(tagFilter) || tagFilter == '' || !tagFilter) return (
-                                <button onClick={() => { openOldBlog(item) }} className='m-auto hover:scale-105 trans-slow w-[23rem] md:w-[21rem] h-[26rem] bg-[#121214] rounded-2xl overflow-hidden'>
+                                <button key={index} onClick={() => { openOldBlog(item) }} className='m-auto hover:scale-105 trans-slow w-[23rem] md:w-[21rem] h-[26rem] bg-[#121214] rounded-2xl overflow-hidden'>
                                     <div className='h-[60%]  bottom-3 bg-gray-900 overflow-hidden'>
                                         <img className=' object-cover  w-full h-full' src={item.meta.thumbnail} alt="" />
                                     </div>
