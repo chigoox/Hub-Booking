@@ -71,7 +71,6 @@ const BlogSection = ({ onPage }) => {
 
                     {
                         dataBlog.map((item, index) => {
-                            console.log(item)
                             if (item.meta?.tags?.includes(tagFilter) || tagFilter == '' || !tagFilter) return (
                                 <button key={index} onClick={() => { openOldBlog(item) }} className='m-auto hover:scale-105 trans-slow w-[23rem] md:w-[21rem] h-[26rem] bg-[#121214] rounded-2xl overflow-hidden'>
                                     <div className='h-[60%]  bottom-3 bg-gray-900 overflow-hidden'>

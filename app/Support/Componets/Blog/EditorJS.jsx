@@ -17,11 +17,14 @@ import CheckList from '@editorjs/checklist'
 import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import SimpleImage from '@editorjs/simple-image'
+import { addToDoc, fetchDocument, updateArrayDatabaseItem } from '../../MyCodes/Database';
+import { format } from 'date-fns';
 
 
 
 
 function EditorJSX({ data, postMeta, SetsavingBlog }) {
+    const [refreash, setRefreash] = useState(false)
 
 
     const initEditor = (postMeta) => {
@@ -126,7 +129,6 @@ function EditorJSX({ data, postMeta, SetsavingBlog }) {
                 quote: Quote
             },
             onChange: async (api, event) => {
-                console.log(await saveBlog(editor))
                 setblogID(await saveBlog(editor))
 
 
@@ -146,6 +148,7 @@ function EditorJSX({ data, postMeta, SetsavingBlog }) {
     const [dataBlog, dataMETADATA] = data
     const editorInstance = useRef();
     const postTags = dataMETADATA?.postTags ? dataMETADATA?.postTags : []
+
     const saveBlog = async (editor) => {
         editor.save().then(async (outputData) => {
             setsavedBlog(outputData)
@@ -188,15 +191,17 @@ function EditorJSX({ data, postMeta, SetsavingBlog }) {
     }
 
     useEffect(() => {
-        console.log('first')
         if (!editorInstance.current) {
             initEditor();
         }
+        if (!refreash) setTimeout(() => {
+            setRefreash(true)
+        }, 500);
         return () => {
             editorInstance?.current?.destroy();
             editorInstance.current = null;
         }
-    }, [postMeta]);
+    }, [postMeta, refreash]);
     return (
         <div id='editorjs' className='blog bg-white w-full px-2 mx-auto relative rounded'></div>
 

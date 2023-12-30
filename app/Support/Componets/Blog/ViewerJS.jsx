@@ -22,6 +22,8 @@ import SimpleImage from '@editorjs/simple-image'
 
 
 function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
+    console.log(data)
+    const [refreash, setRefreash] = useState(false)
 
 
     const initEditor = (toggleRead = false) => {
@@ -133,7 +135,7 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
                 editorInstance.current = editor;
             },
 
-            data: savedBlog ? saveBlog : data.data,
+            data: savedBlog ? savedBlog : data.data,
             readOnly: !editBlog
 
         });
@@ -143,7 +145,7 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
 
 
 
-    const [savedBlog, setsavedBlog] = useState({})
+    const [savedBlog, setsavedBlog] = useState()
     const [blogID, setblogID] = useState(0)
     const editorInstance = useRef();
 
@@ -193,11 +195,14 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
         if (!editorInstance.current) {
             initEditor();
         }
+        if (!refreash) setTimeout(() => {
+            setRefreash(true)
+        }, 100);
         return () => {
             editorInstance.current?.destroy();
             editorInstance.current = null;
         }
-    }, [postMeta, editBlog]);
+    }, [postMeta, editBlog, refreash]);
 
 
     return (

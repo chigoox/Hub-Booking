@@ -1,13 +1,10 @@
 'use client'
-import { getDownloadURL, ref, uploadBytesResumable, uploadString } from "firebase/storage";
-import { AiFillSave, AiOutlineClose, AiOutlineDatabase, AiOutlineEdit, AiOutlineThunderbolt } from 'react-icons/ai';
-import React, { useEffect, useRef, useState } from 'react'
-import { DotLoader, ScaleLoader } from 'react-spinners';
+import dynamic from "next/dynamic";
+import { useState } from 'react';
+import { AiFillSave, AiOutlineClose, AiOutlineDatabase } from 'react-icons/ai';
+import { ScaleLoader } from 'react-spinners';
+import { fetchDocument, updateDatabaseItem } from "../../MyCodes/Database";
 import BlogCustomizer from './BlogCustomizer';
-import dynamic from "next/dynamic"
-import { format } from "date-fns";
-import { addToDatabase, addToDoc, fetchDocument, updateArrayDatabaseItem, updateDatabaseItem } from "../../MyCodes/Database";
-import { STORAGE } from "@/Firebase";
 
 const Editor = dynamic(() => import("./EditorJS.jsx"), { ssr: false })
 
