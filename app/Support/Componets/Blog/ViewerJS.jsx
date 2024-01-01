@@ -17,12 +17,10 @@ import CheckList from '@editorjs/checklist'
 import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import SimpleImage from '@editorjs/simple-image'
-import { addToDoc, fetchDocument, updateArrayDatabaseItem } from '../../MyCodes/Database';
+import { addToDatabase, addToDoc, fetchDocument, updateArrayDatabaseItem, updateDatabaseItem } from '../../MyCodes/Database';
 import { format } from 'date-fns';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-
-
-
+import { STORAGE } from '@/Firebase';
 
 
 function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
@@ -164,15 +162,16 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
                 titleInput.classList.remove('red')
                 SetsavingBlog(true)
 
-                const { blogID } =
 
-                    await updateDatabaseItem('Blogs', 'Blogs', postID, {
-                        data: outputData,
-                        meta: postMeta ? postMeta : data.meta,
-                        title: inputValue,
-                        date: format(Date.now(), 'MM-dd-yyyy'),
 
-                    })
+                await addToDatabase('Blogs', `B-${data.blogID}`, {
+                    data: outputData,
+                    meta: postMeta ? postMeta : data.meta,
+                    title: inputValue,
+                    date: format(Date.now(), 'MM-dd-yyyy'),
+                    blogID: data.blogID
+
+                })
                 for (let index = 0; index < postMeta?.tag ? postMeta.tag?.length : 0; index++) {
                     updateArrayDatabaseItem('BlogPage', 'METADATA', 'postTags', postMeta.tags[index])
 

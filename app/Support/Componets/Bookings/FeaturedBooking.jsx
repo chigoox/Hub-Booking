@@ -3,21 +3,64 @@ import { Rental } from '@/app/classes'
 import { Button, Card } from '@nextui-org/react'
 import { Modal } from 'antd'
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InfoSection from './InfoSection'
 import { BookSection } from './BookSection'
+import { fetchInOrder } from '../../MyCodes/Database'
+
+
+const BOOK = ({ bookItem, index, setOpenBookItem }) => {
+    const [currentImg, setCurrentImg] = useState(0)
+    return (
+        <div key={index} className="m-auto relative fadeInZoom rounded-3xl overflow-hidden  center-col">
+            <Button onPress={(e) => { setCurrentImg(o => o == 0 ? bookItem?.images.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-black rounded-full p-6">
+                <ArrowLeftCircle />
+            </Button>
+            <Button onPress={(e) => { setCurrentImg(o => (bookItem?.images.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white   border-black rounded-full p-6">
+                <ArrowRightCircle />
+            </Button>
+            <Card isPressable onPress={(e) => setOpenBookItem(bookItem)} className="bg-red-800 relative  h-[90%] w-[90%] sm:h-[85%] sm:w-[85%] overflow-hidden drop-shadow-lg shadow-black  rounded-3xl ">
+                <img className="h-full w-full  object-cover aspect-square rounded-3xl " src={bookItem?.images[currentImg]} />
+            </Card>
+            <div className=" px-2">
+                <div className="between w-full text-black  mt-1  ">
+                    <h1 className=" font-bold  ">{bookItem?.name}</h1>
+                    <h1 className="font-extrabold">${bookItem?.price}</h1>
+                </div>
+                <h1 className="font-light">{bookItem?.location}</h1>
+                <h1 className="font-extralight text-gray-400">{bookItem?.description}</h1>
+
+            </div>
+        </div>
+
+
+
+
+    )
+}
 
 function FeaturedBooking() {
     const [openBookItem, setOpenBookItem] = useState(false)
     const [startBooking, setStartBooking] = useState(false)
     const toggleStartBooking = () => setStartBooking(!startBooking)
+    const [featuredList, setFeaturedList] = useState([])
+    const fetchFeaturedList = async () => {
+        const list = await fetchInOrder('Rentals', 'ID')
+        setFeaturedList(list)
+    }
 
     const imgs = ['https://plus.unsplash.com/premium_photo-1700391373027-e0ba6c3da990?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         'https://images.unsplash.com/photo-1698862341365-cf4478f12332?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         'https://images.unsplash.com/photo-1682686580922-2e594f8bdaa7?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://images.unsplash.com/photo-1682685794304-99d3d07c57d2?q=80&w=2486&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',]
+        'https://images.unsplash.com/photo-1682685794304-99d3d07c57d2?q=80&w=2486&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    ]
 
 
+    useEffect(() => {
+        fetchFeaturedList()
+
+
+    }, [])
 
 
 
@@ -55,33 +98,9 @@ function FeaturedBooking() {
 
             <div id="Booking" className=" gap-4  relative hidescroll py-40 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 <h1 className="text-3xl absolute md:top-14 px-8 font-bold mt-10 w-1/2 -left-2 bg-black text-white -skew-x-12">Featured Booking</h1>
-                {booking.map((bookItem, index) => {
-                    const [currentImg, setCurrentImg] = useState(0)
+                {featuredList?.map((bookItem, index) => {
                     return (
-                        <div key={index} className="m-auto relative fadeInZoom rounded-3xl overflow-hidden  center-col">
-                            <Button onPress={(e) => { setCurrentImg(o => o == 0 ? bookItem?.images.length - 1 : o - 1) }} className="z-[99] left-10 text-white absolute border-black rounded-full p-6">
-                                <ArrowLeftCircle />
-                            </Button>
-                            <Button onPress={(e) => { setCurrentImg(o => (bookItem?.images.length - 1) == o ? 0 : o + 1) }} className="z-[99] right-10 absolute text-white   border-black rounded-full p-6">
-                                <ArrowRightCircle />
-                            </Button>
-                            <Card isPressable onPress={(e) => setOpenBookItem(bookItem)} className="bg-red-800 relative  h-[90%] w-[90%] sm:h-[85%] sm:w-[85%] overflow-hidden drop-shadow-lg shadow-black  rounded-3xl ">
-                                <img className="h-full w-full  object-cover aspect-square rounded-3xl " src={bookItem?.images[currentImg]} />
-                            </Card>
-                            <div className=" px-2">
-                                <div className="between w-full text-black  mt-1  ">
-                                    <h1 className=" font-bold  ">{bookItem?.name}</h1>
-                                    <h1 className="font-extrabold">${bookItem?.price}</h1>
-                                </div>
-                                <h1 className="font-light">{bookItem?.location}</h1>
-                                <h1 className="font-extralight text-gray-400">{bookItem?.description}</h1>
-
-                            </div>
-                        </div>
-
-
-
-
+                        <BOOK bookItem={bookItem} index={index} setOpenBookItem={setOpenBookItem} />
                     )
                 })}
             </div>

@@ -41,6 +41,58 @@
   /* ... */
 }
 
+
+
+
+
+#featuredGrid0 {
+  grid-column: span 6;
+}
+
+#featuredGrid1 {
+  grid-column: span 6;
+}
+
+#featuredGrid2 {
+  grid-column: span 12;
+}
+
+#featuredGrid3 {
+  grid-column: span 12;
+}
+
+#featuredGrid4 {
+  grid-column: span 5;
+}
+
+@media screen and (min-width: 768px) {
+#featuredGrid0 {
+    grid-column: span 4;
+    border: white 2px solid;
+  }
+
+  #featuredGrid1 {
+    grid-column: span 4;
+  }
+
+  #featuredGrid2 {
+    grid-column: span 4;
+    border: white 2px solid;
+  }
+
+  #featuredGrid3 {
+    grid-column: span 5;
+  }
+
+  #featuredGrid4 {
+    grid-column: span 7;
+  }
+  
+}
+
+
+
+
  :root{
   --BookingBg: #0d1821;
  }
