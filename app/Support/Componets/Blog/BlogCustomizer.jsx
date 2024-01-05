@@ -62,6 +62,7 @@ const BlogCustomizer = ({ setPostMeta, blogTitle, ShowMetaMenu, toggleNewMeta, d
         />
       </div>}
       <textarea autoFocus={true} defaultValue={data ? data.meta.tags?.toString() : ''} onChange={captureData} placeholder='Tags' name="tags" id="" cols="30" rows="2" maxLength={72} className=' text-black p-2 hidescroll'></textarea>
+      <textarea autoFocus={true} defaultValue={data ? data.meta.description?.toString() : ''} onChange={captureData} placeholder='Description' name="description" id="" cols="30" rows="3" maxLength={150} className=' text-black my-2 p-2 hidescroll'></textarea>
       <h1 className={'text-center'}>Background Color</h1>
       <input onChange={captureData} name={'bgColor'} type="color" className='w-full h-12 bg-gray-700 rounded-full' />
       <h1 className='text-center'>Text Color</h1>

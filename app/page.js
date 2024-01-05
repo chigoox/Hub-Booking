@@ -61,16 +61,35 @@ export default function Home() {
       <FeaturedBlog />
 
 
-      <div className="between">
-        <div className="h-fit border w-40 overflow-hidden">
+      <div className="grid grid-cols-12 w-full  overflow-hidden">
+
+        <div className="h-fit  col-span-3 m-auto overflow-hidden">
           <div className="h-fit w-screen  overflow-hidden">
             <video className="w-full" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
           </div>
         </div>
 
-        <div className="h-fit border w-40 overflow-hidden">
+        <div className="h-fit m-auto col-span-1 overflow-hidden">
           <div className="h-fit w-screen  overflow-hidden">
-            <video className="w-full" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
+            <video className="w-full relative right-[14rem]" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
+          </div>
+        </div>
+
+        <div className="h-fit m-auto  col-span-3 overflow-hidden">
+          <div className="h-fit w-screen  overflow-hidden">
+            <video className="w-full relative right-[14rem]" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
+          </div>
+        </div>
+
+        <div className="h-fit m-auto  col-span-1 overflow-hidden">
+          <div className="h-fit w-screen  overflow-hidden">
+            <video className="w-full relative right-[14rem]" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
+          </div>
+        </div>
+
+        <div className="h-fit m-auto col-span-3 relative  overflow-hidden">
+          <div className="h-fit w-screen  overflow-hidden">
+            <video className="w-full relative right-[36rem]" playsInline autoPlay loop muted src={'/Videos/vid2.mp4'} />
           </div>
         </div>
       </div>

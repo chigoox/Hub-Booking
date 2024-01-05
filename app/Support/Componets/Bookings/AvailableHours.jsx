@@ -33,7 +33,7 @@ const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) =
     }
 
     return (
-        <div className="flex text-white flex-col items-center w-96 md:w-auto gap-2 mt-4 border-y  h-[30rem]">
+        <div className="flex text-black flex-col items-center w-96 md:w-auto gap-2 mt-4 border-y  h-[30rem]">
             <span>
                 Available times:{" "}
                 <span className="font-semibold ">
@@ -54,9 +54,9 @@ const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) =
                             onClick={() => { setSelectedTime(hour); setReload(!reload) }}
                         >
                             <CheckboxIcon
-                                color="white"
+                                color="green"
                                 className={cn(
-                                    "w-[16px] h-[16px] absolute hidden top-0 right-0 transform translate-x-1 -translate-y-1.5 text-white",
+                                    "w-[16px] h-[16px] absolute hidden top-0 right-0 transform translate-x-1 -translate-y-1.5 text-black",
                                     selectedTime && isSameMinute(selectedTime, hour) && "block"
                                 )}
                             />
@@ -68,7 +68,7 @@ const AvailableHours = memo(({ freeTimes, setBookingInfo, setReload, reload }) =
             {selectedTime && (
                 <div className="w-full py-6">
                     <h1 className="text-center">reservation time is: </h1>
-                    <h1 className="font-semibold text-white pl-1 text-center">
+                    <h1 className="font-semibold text-black pl-1 text-center">
                         {format(selectedTime, "MM-dd-yy hh:mm aaaaa'm'")}
                     </h1>
                     <div className="center w-full">

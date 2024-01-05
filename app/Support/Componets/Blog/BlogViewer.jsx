@@ -4,7 +4,7 @@ import { Trash2Icon } from "lucide-react";
 import { useRef, useState } from 'react';
 import { AiFillEdit, AiOutlineClose, AiOutlineDatabase, AiOutlineEdit } from 'react-icons/ai';
 import { ScaleLoader } from 'react-spinners';
-import { updateDatabaseItem } from "../../MyCodes/Database";
+import { deleteDocument, updateDatabaseItem } from "../../MyCodes/Database";
 import BlogCustomizer from './BlogCustomizer';
 import dynamic from "next/dynamic";
 
@@ -13,7 +13,7 @@ const BlogViewer = ({ toggleOldBlog, dataMETADATA, data }) => {
     const [blogTitle, setBlogTitle] = useState('')
     const [postMeta, setPostMeta] = useState()
     const [savingBlog, SetsavingBlog] = useState(false)
-    const postID = data.postID
+    const blogID = data?.blogID
     const [ShowMetaMenu, setShowMetaMenu] = useState(false)
     const [editBlog, setEditBlog] = useState(false)
     const toggleEdit = () => {
@@ -27,7 +27,7 @@ const BlogViewer = ({ toggleOldBlog, dataMETADATA, data }) => {
 
 
     const deleteBlogButton = () => {
-        updateDatabaseItem('BlogPage', 'Blogs', postID)
+        deleteDocument('Blogs', blogID)
         toggleOldBlog();
     }
 
@@ -43,7 +43,7 @@ const BlogViewer = ({ toggleOldBlog, dataMETADATA, data }) => {
             </div>
             <div className='w-full  center flex-col'>
                 <div className='center flex-col w-full  gap-2'>
-                    {!editBlog && <h1 className="h-12 text-3xl font-bold">{data.title}</h1>}
+                    {!editBlog && <h1 className="h-12 text-3xl font-bold">{data?.title}</h1>}
                     {editBlog && <input
                         className={'h-12 w-[40%] m-auto text-black text-2xl p-2'}
                         onChange={({ target }) => { setBlogTitle(target.value) }}

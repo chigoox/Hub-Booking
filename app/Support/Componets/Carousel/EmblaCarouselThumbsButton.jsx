@@ -16,7 +16,7 @@ export const Thumb = (props) => {
                 type="button"
             >
 
-                <Image
+                <img
                     className="emblathumb-thumbs__slide__img object-cover max-md:scale-150 lg:scale-100 md:scale-150 sm:scale-100 "
                     src={imgSrc}
                     alt="Your alt text"

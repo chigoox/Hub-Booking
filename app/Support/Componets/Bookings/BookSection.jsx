@@ -193,7 +193,7 @@ export const BookSection = ({ openBookItem }) => {
 
 
                 {/* calendar implementation */}
-                <div className="flex flex-col gap-2 h-[450px] w-[380px] md:h-fit md:w-fit mb-10  m-auto my-0">
+                <div className="flex flex-col gap-2 h-[450px] w-[380px] md:h-fit md:w-fit m-auto ">
                     {/* calendar header */}
                     <div className="grid grid-cols-3 md:w-[40rem] px-8">
                         <button
@@ -204,13 +204,13 @@ export const BookSection = ({ openBookItem }) => {
                             <ArrowLeftCircle
                                 size={20}
                                 aria-hidden="true"
-                                color='white'
+                                color='black'
                                 className={cn('top-2 relative',
                                     isThisMonth(new Date(currentMonth)) && "text-pink-400"
                                 )}
                             />
                         </button>
-                        <h2 className="font-semibold text-white justify-center flex text-center">
+                        <h2 className="font-semibold text-black justify-center flex text-center">
                             {format(firstDayCurrentMonth, " MMMM yyyy")}
                         </h2>
                         <button
@@ -218,7 +218,7 @@ export const BookSection = ({ openBookItem }) => {
                             className="flex justify-end top-2 relative"
                             onClick={nextMonth}
                         >
-                            <ArrowRightCircle size={20} aria-hidden="true" color='white' />
+                            <ArrowRightCircle size={20} aria-hidden="true" color='black' />
                         </button>
                     </div>
 
@@ -230,7 +230,7 @@ export const BookSection = ({ openBookItem }) => {
                                     <div
                                         key={i}
                                         className={cn(
-                                            "flex justify-center items-center text-sm text-white w-full py-2",
+                                            "flex justify-center items-center text-sm text-black w-full py-2",
                                             {
                                                 "text-red-700 font-bold":
                                                     day === "Sun" || day === "Sat"
@@ -325,7 +325,7 @@ export const BookSection = ({ openBookItem }) => {
 
                 <div className={cn(`hidden mx-auto fadeInZoom`, calendarTouched && "block")}>
                     <span className="flex items-center w-full justify-center gap-1">
-                        <span>
+                        <span className='bg-black-800 p-2'>
                             <h1 className='text-center text-white'>Select reservation time for</h1>
                             <h1 className="text-center text-white font-semibold pl-1">
                                 {format(selectedDay, "dd MMMM yyyy").toString()}

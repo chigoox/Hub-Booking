@@ -198,7 +198,7 @@ function EditorJSX({ data, postMeta, SetsavingBlog }) {
         }
         if (!refreash) setTimeout(() => {
             setRefreash(true)
-        }, 500);
+        }, 100);
         return () => {
             editorInstance?.current?.destroy();
             editorInstance.current = null;

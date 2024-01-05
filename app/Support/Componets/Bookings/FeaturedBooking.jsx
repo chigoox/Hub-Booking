@@ -77,19 +77,21 @@ function FeaturedBooking() {
         <div>
             {openBookItem && <div className="center">
                 <Modal
-                    closeIcon={(<div></div>)}
+                    closeIcon={(<div className='border-4 relative bottom-2 rounded-full font-extrabold'>
+                        <Button onPress={() => { setOpenBookItem(false) }} className={`h-10 w-10 font-bold p-2 text-white hover:  rounded-3xl bg-gray-950 hover:bg-red-900 trans-slow`}>X</Button>
+                    </div>)}
                     footer={(<div></div>)}
                     wrapClassName="bg-balck"
-                    className="modally "
+                    className="modally z-[999]"
                     open={openBookItem}
 
                 >
                     <h1 className="text-2xl font-bold text-center p-4 bg-black text-white">Booking</h1>
                     {!startBooking && <InfoSection openBookItem={openBookItem} />}
                     {startBooking && <BookSection openBookItem={openBookItem} />}
-                    <div className="sticky bottom-5 w-full my-10 z-10 mb-3 gap-4 center">
-                        <Button onPress={toggleStartBooking} className={`h-10 w-28 font-bold p-2 text-white hover: rounded-3xl trans-slow hover:text-green-200 hover:bg-blue-700 bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
-                        <Button onPress={() => { setOpenBookItem(false) }} className={`h-10 w-28 font-bold p-2 text-white hover:  rounded-3xl bg-gray-950 hover:bg-red-900 trans-slow`}>Close</Button>
+                    <div className="sticky mb-5  w-full  z-10  gap-4 center">
+                        <Button onPress={toggleStartBooking} className={`h-10 w-3/4 font-bold p-2 text-white hover: rounded-3xl trans-slow hover:text-green-200 hover:bg-blue-700 bg-blue-500`}>{startBooking ? 'Back' : 'Start Booking'}</Button>
+
                     </div>
 
                 </Modal>

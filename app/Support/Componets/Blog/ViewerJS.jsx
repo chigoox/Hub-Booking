@@ -137,7 +137,7 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
                 editorInstance.current = editor;
             },
 
-            data: savedBlog ? savedBlog : data.data,
+            data: savedBlog ? savedBlog : data?.data,
             readOnly: !editBlog
 
         });
@@ -153,7 +153,7 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
 
 
     const saveBlog = async (editor) => {
-        editor.save().then(async (outputData) => {
+        if (editor != 'meta') editor.save().then(async (outputData) => {
             setsavedBlog(outputData)
             const titleInput = (document.querySelector('#title'))
             const inputValue = titleInput.value
@@ -162,18 +162,16 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
                 titleInput.classList.remove('red')
                 SetsavingBlog(true)
 
-
-
-                await addToDatabase('Blogs', `B-${data.blogID}`, {
+                await addToDoc('Blogs', `B-${data.blogID}`, {
                     data: outputData,
                     meta: postMeta ? postMeta : data.meta,
                     title: inputValue,
                     date: format(Date.now(), 'MM-dd-yyyy'),
                     blogID: data.blogID
-
                 })
+
                 for (let index = 0; index < postMeta?.tag ? postMeta.tag?.length : 0; index++) {
-                    updateArrayDatabaseItem('BlogPage', 'METADATA', 'postTags', postMeta.tags[index])
+                    updateArrayDatabaseItem('META', 'Blogs', 'blogTags', postMeta.tags[index])
 
                 }
                 setTimeout(() => {
@@ -190,8 +188,16 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
             console.log('Saving failed: ', error)
         });
         //toggleNewBlog();
+
+        if (editor == 'meta')
+            await addToDoc('Blogs', `B-${data.blogID}`, {
+                meta: postMeta ? postMeta : data.meta,
+            })
     }
 
+    useEffect(() => {
+        if (postMeta) saveBlog('meta')
+    }, [postMeta])
 
 
     useEffect(() => {
@@ -209,7 +215,7 @@ function ViewerJSX({ editBlog, data, postMeta, SetsavingBlog }) {
 
 
     return (
-        <div id='editorjs' className='blog bg-white w-full px-2 mx-auto relative rounded'></div>
+        <div id='editorjs' className='editorJs blog bg-white w-full px-2 mx-auto relative rounded'></div>
 
     )
 }

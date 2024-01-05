@@ -15,7 +15,7 @@ function InfoSection({ openBookItem, forThis }) {
 
 
             />
-            <div className=' px-5 md:px-[20%]  text-white mt-2'>
+            <div className=' px-5 md:px-[20%]  text-[#1c1a1a]'>
                 <div className='between '>
                     <h1 className='text-4xl font-bold'>{openBookItem?.name}</h1>
                     <h1 className='text-lg font-light'>{openBookItem?.location}</h1>
