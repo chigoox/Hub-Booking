@@ -238,7 +238,7 @@ export const RentalSection = ({ }) => {
 
                     {rentalData.map((rental, index) => {
                         return rental.name == 'name' ?
-                            (<div className='h-12 bg-black-800 rounded-3xl center'>
+                            (<div key={index} className='h-12 bg-black-800 rounded-3xl center'>
                                 <div className='between gap-8 md:gap-32 w-full'>
                                     <h1 className='text-center text-white m-auto '>Thumbnail</h1>
                                     <h1 className='text-center text-white m-auto'>{rental.name}</h1>

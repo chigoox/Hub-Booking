@@ -14,8 +14,8 @@ function page() {
         <div className='min-h-screen w-full   relative  h-screen trans  bg-black'>
             {loading && <Loading />}
             <div className='h-24  grid grid-cols-12 text-2xl border-b text-white   w-full font-bold'>
-                {menuItem.map(i => {
-                    return (<Button key={i} onPress={() => { setCurrentMenu(currentMenu == i ? false : i) }} className={` w-32 p-2 m-auto col-span-6 center hover:bg-gray-700`}>{i}</Button>)
+                {menuItem.map((i, index) => {
+                    return (<Button key={index} onPress={() => { setCurrentMenu(currentMenu == i ? false : i) }} className={` w-32 p-2 m-auto col-span-6 center hover:bg-gray-700`}>{i}</Button>)
                 })}
             </div>
             {currentMenu == 'Rentals' &&

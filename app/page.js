@@ -10,22 +10,6 @@ import { fetchDocument, updateDatabaseItem } from "./Support/MyCodes/Database";
 
 export default function Home() {
 
-  const successBook = async () => {
-
-    await fetchDocument('Admin', 'onHold', 'setAdminadminReservation')
-
-    updateDatabaseItem('Admin', 'onHold', 'uid')
-    updateDatabaseItem('Users', 'uid', 'willBook')
-
-  }
-  const canceledBook = () => {
-    if (false) {
-      updateDatabaseItem('Admin', 'onHold', 'uid')
-      updateDatabaseItem('Users', 'uid', 'willBook')
-    }
-
-  }
-
 
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
