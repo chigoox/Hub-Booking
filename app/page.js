@@ -1,6 +1,10 @@
+'use client'
 import { Card } from "@nextui-org/react";
 import FeaturedBlog from "./Support/Componets/Blogs/FeaturedBlog";
 import FeaturedBooking from "./Support/Componets/Bookings/FeaturedBooking";
+import { AiFillAlert } from "react-icons/ai";
+import { updateArrayDatabaseItem } from "./Support/MyCodes/Database";
+import { EmailCapture } from "./Support/Componets/EmailCapture";
 
 
 
@@ -12,6 +16,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full  relative  h-screen trans  bg-white">
+      <EmailCapture />
+
 
       <div className="between h-screen  relative overflow-hidden ">
         <div className="h-screen w-screen absolute top-0 center  ">

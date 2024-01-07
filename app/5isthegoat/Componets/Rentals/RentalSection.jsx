@@ -167,7 +167,7 @@ export const RentalSection = ({ }) => {
                 open={openEditWindow}
             >
 
-                {openEditor && <div className='w-full h-[30rem] top-20 px-20 rounded-2xl bg-black m-auto absolute z-50'>
+                {openEditor && <div className='w-full h-[30rem]  top-20 px-20 rounded-2xl bg-black m-auto absolute z-50'>
                     <h1 className='text-white text-center'>Edit Item</h1>
                     <div className='center-col mt-4 gap-4'>
                         <Input defaultValue={openEditWindow?.name} onChange={handleInputUpdate} className='w-72' placeholder='Name' name={'name'} />
@@ -232,17 +232,17 @@ export const RentalSection = ({ }) => {
                 Create new Rental
             </Button>
 
-            <div className='items-center justify-center md:px-20'>
-                <div className='grid grid-cols-1   gap-2 p-2 overflow-y-scroll hidescroll  md:w-1/2  h-auto'>
+            <div className='items-center justify-center '>
+                <div className='grid grid-cols-1   gap-2 p-2 overflow-y-scroll hidescroll  md:w-3/4 h-auto m-auto'>
 
 
                     {rentalData.map((rental, index) => {
                         return rental.name == 'name' ?
-                            (<div key={index} className='h-12 bg-black-800 rounded-3xl center'>
+                            (<div key={index} className='h-12  bg-black-800 rounded-3xl center'>
                                 <div className='between gap-8 md:gap-32 w-full'>
-                                    <h1 className='text-center text-white m-auto '>Thumbnail</h1>
-                                    <h1 className='text-center text-white m-auto'>{rental.name}</h1>
-                                    <h1 className=' text-white text-center m-auto'>{rental.category}</h1>
+                                    <h1 className='text-center text-white w-32'>Thumbnail</h1>
+                                    <h1 className='text-center text-white w-32'>{rental.name}</h1>
+                                    <h1 className=' text-white text-center w-32'>{rental.category}</h1>
                                 </div>
 
 
@@ -252,10 +252,10 @@ export const RentalSection = ({ }) => {
 
                             (
                                 <Button onPress={() => { setOpenEditWindow(rental) }} key={index} className='bg-black-800 first:bg-opacity-0  col-span-1 rounded-3xl h-32 overflow-hidden w-full '>
-                                    <div className='between gap-8 md:gap-32 w-auto '>
-                                        <CardNX className='bg-black-800 flex-shrink-0 h-32 w-32 rounded-3xl'>
+                                    <div className='between  w-auto '>
+                                        <CardNX className='bg-black-800  flex-shrink-0 h-32 w-32 rounded-3xl'>
                                             <CardBody className='center h-full'>
-                                                {rental.images[0] == 'Thumbnail' ? <h1 className='h-full center text-white'>{rental.images[0]}</h1> : <Image className='w-full h-full object-cover' src={rental.images[0]} />}
+                                                {rental.images[0] == 'Thumbnail' ? <h1 className='h-full center text-white'>{rental.images[0]}</h1> : <img className='w-full h-full object-cover' src={rental.images[0]} />}
                                             </CardBody>
                                         </CardNX>
                                         <h1 className='text- text-white w-40'>{rental.name}</h1>

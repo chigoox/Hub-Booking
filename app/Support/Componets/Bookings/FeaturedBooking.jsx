@@ -102,7 +102,12 @@ function FeaturedBooking() {
                 <h1 className="text-3xl absolute md:top-14 px-8 font-bold mt-10 w-1/2 -left-2 bg-black text-white -skew-x-12">Featured Booking</h1>
                 {featuredList?.map((bookItem, index) => {
                     return (
-                        <BOOK bookItem={bookItem} index={index} setOpenBookItem={setOpenBookItem} />
+                        <BOOK
+                            key={index}
+                            bookItem={bookItem}
+                            index={index}
+                            setOpenBookItem={setOpenBookItem}
+                        />
                     )
                 })}
             </div>

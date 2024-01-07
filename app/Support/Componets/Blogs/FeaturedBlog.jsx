@@ -55,7 +55,7 @@ function FeaturedBlog() {
                 {featuredList.map((item, index) => {
 
                     return (
-                        <Card isPressable onPress={() => {
+                        <Card key={index} isPressable onPress={() => {
                             setOpenBlog({
                                 ...item
                             })
