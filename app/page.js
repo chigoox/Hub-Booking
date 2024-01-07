@@ -1,7 +1,6 @@
-import { Card, Image } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
 import FeaturedBlog from "./Support/Componets/Blogs/FeaturedBlog";
 import FeaturedBooking from "./Support/Componets/Bookings/FeaturedBooking";
-import { fetchDocument, updateDatabaseItem } from "./Support/MyCodes/Database";
 
 
 

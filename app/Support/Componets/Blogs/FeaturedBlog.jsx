@@ -1,9 +1,8 @@
 'use client'
-import { fetchInOrder } from '../../MyCodes/Database'
-import { Button, Card, CardFooter, CardHeader, Image } from '@nextui-org/react'
+import { Button, Card, CardHeader } from '@nextui-org/react'
 import { Modal } from 'antd'
-import React, { useEffect, useState } from 'react'
-import ViewerJSX from '../Blog/ViewerJS'
+import { useEffect, useState } from 'react'
+import { fetchInOrder } from '../../MyCodes/Database'
 import BlogViewerFrontEND from '../Blog/BlogViewerFrontEND'
 
 function FeaturedBlog() {
@@ -43,7 +42,7 @@ function FeaturedBlog() {
                 >
                     <div className='h-auto w-auto'>
                         <h1 className="text-2xl font-bold text-center p-4 bg-black text-white">Blogs</h1>
-                        <BlogViewerFrontEND data={openBlog} />
+                        {/*  <BlogViewerFrontEND data={openBlog} /> */}
                     </div>
                 </Modal>
             </div>}
