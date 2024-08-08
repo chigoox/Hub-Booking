@@ -126,7 +126,7 @@ export const RentalSection = ({ }) => {
                     <Uploader setter={setRental} setterArray={setRentalImg} folderName={'Posts'} />
 
                     <div className='evenly my-2'>
-                        <Input name='name' value={rental?.name} variant={'underlined'} onChange={handleInput} placeholder='rental name' className=' w-80 md:w-96 text-white bg-none' />
+                        <Input name='name' value={rental?.name} variant={'underlined'} onChange={handleInput} placeholder='rental name' className=' w-80 md:w-96 text-black bg-none' />
                         <Input variant={'underlined'} onBeforeInput={'$'} name='price' type='number' value={rental?.price} onChange={handleInput} placeholder='Price' className=' w-[30%]  text-black' />
                     </div>
                     <Select
