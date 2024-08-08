@@ -1,10 +1,8 @@
 'use client'
-import React, { useEffect, useContext } from 'react'
-import { useMemo, useState } from "react"
+import { cn, dayNames } from '@/lib/utils'
+import { Button } from '@nextui-org/react'
 import {
     add,
-    addDays,
-    addHours,
     eachDayOfInterval,
     eachMinuteOfInterval,
     endOfDay,
@@ -26,14 +24,14 @@ import {
     startOfWeek,
     startOfYesterday
 } from "date-fns"
-import { ArrowLeftCircle, ArrowRightCircle, CheckCircle2, ChevronLeft, ChevronRight, MoveLeft } from "lucide-react"
+import { ArrowLeftCircle, ArrowRightCircle, CheckCircle2 } from "lucide-react"
+import { useEffect, useMemo, useState } from 'react'
 import AvailableHours from "../../Componets/Bookings/AvailableHours"
 import TimesBar from '../../Componets/Bookings/TimesBar'
-import { AiFillBackward, AiOutlineArrowDown, AiOutlineArrowLeft, AiOutlineArrowUp } from 'react-icons/ai'
-import { cn, dayNames } from '@/lib/utils'
-import { Button, CheckboxIcon, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
-import { addToDatabase, fetchDocument } from '../../MyCodes/Database'
+import { fetchDocument } from '../../MyCodes/Database'
 import Loading from '../Loading'
+import { Checkbox } from 'antd'
+import Terms from '../../Terms'
 
 
 
@@ -47,9 +45,10 @@ export const BookSection = ({ openBookItem }) => {
     const reservations = adminDATA?.allRes ? adminDATA?.allRes : []
 
     const [loading, setLoading] = useState(false)
-
+    const [agreedTerms, setAgreedTerms] = useState(false)
+    console.log(agreedTerms)
     const total = openBookItem.price
-
+    const [showTerms, setShowTerms] = useState(false)
     const [bookingInfo, setBookingInfo] = useState({})
     const [reload, setReload] = useState(false)
     // display div of availables times
@@ -164,7 +163,7 @@ export const BookSection = ({ openBookItem }) => {
                 body: JSON.stringify({
                     data: {
                         //
-                        price: total,
+                        price: total / 2,
                         name: String(openBookItem?.name),
                         img: openBookItem?.img
                     }
@@ -338,14 +337,17 @@ export const BookSection = ({ openBookItem }) => {
             </div>
 
 
-            {bookingInfo.apointment && <div className=' mb-96  center flex-col text-white p-2'>
-                <h1 className='text-xl text-center'>{`Your reservation is on ${bookingInfo.apointment}`}</h1>
+            {bookingInfo.apointment && <div className=' mb-96  center flex-col p-2'>
+                <h1 className='text-xl text-center md:text-2xl font-bold'>{`Your reservation is on ${bookingInfo.apointment}`}</h1>
                 <h1 className='text-center text-pink-700'>depoit half to comfirm booking</h1>
                 <div className='center gap-1'>
-                    <h1 className='text-center text-pink-700 text-5xl'>{'$' + total}</h1>
+                    <h1 className='text-center text-pink-700 text-5xl'>${total / 2}</h1>
                     <h1>+ Tax</h1>
                 </div>
-                <button onClick={bookNow} className='h-12 w-32 bg-pink-700'>Book Now</button>
+                <Checkbox className='mt-4' value={agreedTerms} onChange={(v) => { setAgreedTerms(v.target.checked) }}>Agree to terms</Checkbox>
+                <Button onPress={() => { setShowTerms(true) }} className='text-blue-600'>Read terms</Button>
+                <Terms showTerms={showTerms} setShowTerms={setShowTerms} />
+                {agreedTerms && <Button onPress={bookNow} className='h-12 w-32 bg-pink-700 text-white '>Book Now</Button>}
             </div>}
         </div>
     )

@@ -10,7 +10,7 @@ function NavBar() {
             </div>
             <div className=' evenly text-white gap-4'>
                 {navMenu.map(menuItem => (<div className='hover:text-[#28587b] hover:font-extrabold font-bold '>
-                    <Link href={`#${menuItem}`}>{menuItem}</Link>
+                    <Link href={`/#${menuItem}`}>{menuItem}</Link>
                 </div>))}
 
             </div>
